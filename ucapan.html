@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kejutan 🎉</title>
+
+  <!-- Tambahan: Import Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      background: url('oursawithd.png') no-repeat center center;
+      background-size: cover; /* default (zoom biar full screen) */
+      color: #fff;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Kalau di halaman galeri → jangan zoom */
+    body.galeri-bg {
+      background-size: contain;
+      background-attachment: fixed;
+      background-position: center top;
+    }
+
+    /* Menu di tengah */
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    nav button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 20px;
+      background: #B9B28A;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 16px;
+    }
+    nav button:hover {
+      background: #B9B28A;
+      transform: scale(1.1);
+    }
+
+    /* Konten halaman */
+    .page {
+      display: none;
+      animation: fadeIn 1s ease-in-out;
+      width: 100%;
+    }
+    .active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .content-box {
+      background: rgba(0,0,0,0.45);
+      backdrop-filter: blur(8px);
+      padding: 25px;
+      border-radius: 20px;
+      max-width: 700px;
+      margin: 20px auto;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+      color: #ffdeeb;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    }
+
+    p {
+      line-height: 1.7;
+      font-size: 1.1rem;
+      color: #f8f9fa;
+    }
+
+    img {
+      max-width: 60%;
+      border-radius: 15px;
+      margin-top: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Menu -->
+  <nav>
+    <button onclick="showPage('ucapan')">💌 Greeting</button>
+    <button onclick="showPage('galeri')">📸 Archive</button>
+    <a href="index.html"><button>🏠 Dashboard</button></a>
+
+  </nav>
+
+  <!-- Halaman Ucapan (default aktif) -->
+  <div id="ucapan" class="page active">
+    <div class="content-box">
+      <h2>Greeting 💌</h2>
+      <p>
+        Happy Birthday <b>Dhifa Putri Rahmadhani</b>! 🥳<br><br>
+        I hope this auspicious day, even though you're far from your family, doesn't change the meaning of this day. Happy twenties! Hahaha, it's so fast!
+        Continue to be a cheerful, kind person, and always bring positive energy to those around you.
+        May all your dreams and hopes come true one by one.
+        <br><br>
+        ✨ No matter what happens, remember, you will always have me as your friend. Happy day to you! 💖
+      </p>
+      <img src="dfff.jpg" alt="Foto spesial ucapan">
+    </div>
+  </div>
+
+  <!-- Halaman Galeri -->
+  <div id="galeri" class="page">
+    <div class="content-box">
+      <h2>Galeri 📸</h2>
+      <p>Our momen spesial oursawithd ✨</p>
+      <img src="aldip5.jpg" alt="Foto 1">
+      <img src="Image%20Malio.jpg" alt="Foto 2">
+      <img src="Id%20Fitri.jpg" alt="Foto 3">
+      <img src="aldip6.jpg" alt="Foto4">
+      <img src="aldip1.jpg" alt="Foto5">
+      <img src="aldip2.jpg" alt="Foto6">
+      <img src="aldip3.jpg" alt="Foto7">
+      <img src="aldip4.jpg" alt="Foto8">
+      <img src="aldip8.jpg" alt="Foto9">
+    </div>
+  </div>
+  
+  <script>
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+
+      // atur background
+      if (pageId === 'galeri') {
+        document.body.classList.add('galeri-bg');
+      } else {
+        document.body.classList.remove('galeri-bg');
+      }
+    }
+  </script>
+
+</body>
+</html>

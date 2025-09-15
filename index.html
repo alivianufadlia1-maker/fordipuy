@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For Dhifa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body{
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      color:#fff;
+      background: url('oursawithd.png') no-repeat center center/cover;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      text-align:center;
+    }
+    h1{
+      font-size:2rem;
+      margin-bottom:0.5rem;
+      text-shadow:0 2px 6px rgba(0,0,0,0.6);
+    }
+    p{
+      margin-bottom:2rem;
+      text-shadow:0 2px 6px rgba(0,0,0,0.6);
+    }
+    .menu{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+    .menu a{
+      padding:12px 20px;
+      border-radius:14px;
+      background:rgba(255,255,255,.15);
+      text-decoration:none;
+      color:#fff;
+      font-weight:600;
+      backdrop-filter:blur(8px);
+      transition:.2s;
+      display:inline-block;
+      min-width:160px;
+    }
+    .menu a:hover{ background:rgba(255,255,255,.3); }
+
+    iframe{
+      width:100%;
+      height:100vh;
+      border:none;
+      display:none;
+    }
+
+    #click-overlay{
+      position:fixed; inset:0;
+      display:flex; align-items:center; justify-content:center;
+      background:rgba(0,0,0,.6);
+      color:#fff;
+      z-index:9999;
+      cursor:pointer;
+      backdrop-filter: blur(4px);
+    }
+    #click-overlay .inner{
+      background:rgba(255,255,255,.08);
+      padding:14px 18px;
+      border-radius:14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Halo, Dhifa Putri Rahmadhani 🎉</h1>
+  <p>There is something special for you ✨</p>
+
+  <div class="menu">
+    <a href="cerita.html?v=2" target="content">📖 Storytime</a>
+    <a href="ucapan.html?v=2" target="content">💌 Other</a>
+  </div>
+
+  <!-- Tempat isi konten -->
+  <iframe name="content"></iframe>
+
+  <!-- Musik tetap jalan -->
+  <audio id="bg-music" loop>
+    <source src="birthday-girl.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Overlay klik pertama -->
+  <div id="click-overlay">
+    <div class="inner">✨ Klik di mana saja untuk mulai (musik on) ✨</div>
+  </div>
+
+    <script>
+  const overlay = document.getElementById('click-overlay');
+  const music   = document.getElementById('bg-music');
+  const iframe  = document.querySelector("iframe");
+  const menu    = document.querySelector(".menu");
+
+  // cek apakah user sudah pernah klik sebelumnya
+  if (localStorage.getItem("musicPlayed") === "true") {
+    overlay.style.display = "none";
+    music.play();
+  }
+
+  overlay.addEventListener('click', () => {
+    music.play().finally(() => { 
+      overlay.style.display = 'none'; 
+      localStorage.setItem("musicPlayed", "true"); // simpan status
+    });
+  });
+
+  // saat menu diklik → tampilkan iframe, sembunyikan intro
+  menu.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      document.querySelector("h1").style.display="none";
+      document.querySelector("p").style.display="none";
+      menu.style.display="none";
+      iframe.style.display="block";
+    });
+  });
+  
+</script>
+
+</body>
+</html>
